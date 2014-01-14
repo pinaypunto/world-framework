@@ -1,0 +1,18 @@
+{
+  "name": "world",
+  "version": "0.0.1",
+  "description": "World concept components for Modern WebApps.",
+  "homepage": "http://",
+  "author": {
+    "name": "Tapquo S.L.",
+    "site": "http://tapquo.com"
+  },
+  "devDependencies": {
+    "grunt-contrib-coffee": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-stylus": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-watch": "*"
+  }
+}
