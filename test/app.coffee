@@ -10,6 +10,10 @@ json = [
           'Form':
             name: 'Hi form 1'
             childs: [
+              {'Label': text: "A ver los inputs......"},
+              {'Input': placeholder: "Input 1"},
+              {'Input': placeholder: "Input 2"},
+              {'Input': placeholder: "Input 3"},
               {'Button': text: "Good!"},
               {'Button': text: "Bad!"}
             ]

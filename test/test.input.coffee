@@ -13,4 +13,4 @@ class @Input extends WorldCore.Item
     return true
 
   onKeyup: =>
-    @trigger "keyup"
+    @bubble "keyup"

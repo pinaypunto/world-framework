@@ -32,17 +32,31 @@ class WorldCore.Item
     @childs = @childs.concat childs
 
   ###*
-   * [trigger description]
+   * [bubble description]
    * @param  {[type]} event
    * @param  {[type]} data={}
    * @param  {[type]} namespace=@namespace
    * @return {[type]}
   ###
-  trigger: (event, data={}, namespace=@namespace) ->
+  bubble: (event, data={}, namespace=@namespace) ->
     data.caller = data.caller or @
     if @superClass
       WorldCore.Events.inform @superClass.uid, "#{namespace}:#{event}", data
-      @superClass.trigger event, data, namespace
+      @superClass.bubble event, data, namespace
+
+  ###*
+   * [tunnel description]
+   * @param  {[type]} event
+   * @param  {[type]} data={}
+   * @param  {[type]} namespace=@namespace
+   * @return {[type]}
+  ###
+  tunnel: (event, data={}, namespace=@namespace) ->
+    data.caller = data.caller or @
+    if @childs.length
+      for child in @childs
+        WorldCore.Events.inform(child.uid, "#{namespace}:#{event}", data)
+        child.tunnel event, data, namespace
 
   ###*
    * [listen description]

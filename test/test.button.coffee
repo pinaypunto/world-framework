@@ -7,7 +7,7 @@ class @Button extends WorldCore.Item
 
   onClick: (event) =>
     event.preventDefault()
-    @trigger "click"
+    @bubble "click"
 
   disable: ->
     @el.attr "disabled", "disabled"
