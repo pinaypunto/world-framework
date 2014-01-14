@@ -27,6 +27,7 @@ class @Form extends WorldCore.Item
         valid = false
         break
     console.debug "Is valid Form --> #{valid}"
+    @tunnel "valid"
     valid
 
   onKeyup: (e) ->
