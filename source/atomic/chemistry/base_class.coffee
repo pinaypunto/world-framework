@@ -6,22 +6,6 @@ class Atomic.Class extends @World.Item
       do @__createElementNode
 
   ###*
-   * [setAttributes description]
-   * @param {[type]} @attributes
-  ###
-  setAttributes: ->
-    super
-    do @__createElementNode
-
-  ###*
-   * [mixAttributes description]
-   * @param {[type]} @attributes
-  ###
-  mixAttributes: ->
-    super
-    do @__createElementNode
-
-  ###*
    * [render description]
    * @param  {[type]} container
    * @return {[type]}
@@ -44,8 +28,6 @@ class Atomic.Class extends @World.Item
       parts = evt.split(" ")
       el = if parts.length is 1 then @el else @el.find(parts.slice(1).join(" "))
       el.on evt, @[callback]
-
-  __bindHTMLEvents: ->
 
   __getDefaultContainer: ->
     container = @el.find("[data-children-container]")

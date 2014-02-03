@@ -7,8 +7,8 @@
     _listeners[eventName].push callback
 
   inform = (eventName, data) ->
-    if _listeners[namespace]
-      listener.call(listener, data) for listener in _listeners[namespace]
+    return false unless _listeners[namespace]
+    listener.call(listener, data) for listener in _listeners[namespace]
 
   listen: listen
   inform: inform
