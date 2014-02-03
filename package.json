@@ -4,8 +4,7 @@
   "description": "World concept components for Modern WebApps.",
   "homepage": "http://",
   "author": {
-    "name": "Tapquo S.L.",
-    "site": "http://tapquo.com"
+    "name": "Ignacio Olalde"
   },
   "devDependencies": {
     "grunt-contrib-coffee": "*",

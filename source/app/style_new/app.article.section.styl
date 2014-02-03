@@ -1,0 +1,15 @@
+body > article > section
+  order: 2
+  flex: 1
+  overflow-y: scroll
+  -webkit-overflow-scrolling: touch
+  background-color: SECTION_BACKGROUND_COLOR
+  padding: SECTION_PADDING
+
+  &.list:not(.indented)
+    padding: 0
+
+  &:not(.active)
+    display: none
+
+

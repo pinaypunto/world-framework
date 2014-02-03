@@ -1,0 +1,69 @@
+{
+    "title": "App demo",
+    "structure": [
+        {
+            "constructor": "Organism.Article",
+            "attributes": {
+                "id": "page1"
+            },
+            "children": [
+                {
+                    "constructor": "Molecule.Header",
+                    "attributes": {
+                        "title": "Header"
+                    }
+                },
+                {
+                    "constructor": "Molecule.ArticleNav",
+                    "attributes": {},
+                    "children": [
+                        {
+                            "constructor": "Atom.Button",
+                            "attributes": {
+                                "text": "button A"
+                            }
+                        },
+                        {
+                            "constructor": "Atom.Button",
+                            "attributes": {
+                                "text": "button B"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "constructor": "Organism.Article",
+            "attributes": {
+                "id": "page2"
+            },
+            "children": [
+                {
+                    "constructor": "Molecule.Header",
+                    "attributes": {
+                        "title": "Header"
+                    }
+                },
+                {
+                    "constructor": "Molecule.ArticleNav",
+                    "attributes": {},
+                    "children": [
+                        {
+                            "constructor": "Atom.Button",
+                            "attributes": {
+                                "text": "button A"
+                            }
+                        },
+                        {
+                            "constructor": "Atom.Button",
+                            "attributes": {
+                                "text": "button B"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

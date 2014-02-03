@@ -1,2 +1,5 @@
 node_modules/
-bower/
+builds/
+source/app/style
+source/example/
+test/example/

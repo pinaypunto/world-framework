@@ -1,0 +1,21 @@
+body > article > footer
+  order: 3
+  background: FOOTER_BACKGROUND_COLOR
+  height: FOOTER_HEIGHT
+  line-height: FOOTER_HEIGHT
+  text-align: center
+
+  & > nav
+    height: 100%
+    display: -webkit-box
+    display: -moz-box
+    display: -webkit-flex
+    display: flex
+    -webkit-box-flex: 1
+    & > button
+      flex: 1
+      order: 1
+      height: FOOTER_HEIGHT
+      background: none
+      border: none
+      font-size: FONT_SIZE_BIG

@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>World core test</title>
+    </head>
+    <body>
+        <script type="text/javascript" src="../../bower/world.core.js"></script>
+        <script type="text/javascript">
+            var ALL = new World.Item({name: "Felipe"}, [
+                new World.Item({name: "Ignacio"}),
+                new World.Item({name: "Kike"}),
+                new World.Item({name: "Luna"}, [
+                    new World.Item({name: "Mikel"}),
+                    new World.Item({name: "Iosu"})
+                ])
+            ]);
+            console.log(ALL);
+        </script>
+    </body>
+</html>

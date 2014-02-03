@@ -1,0 +1,85 @@
+{
+    "title": "App demo",
+    "startRoute": "page1",
+    "structure": [
+        {
+            "type": "Template",
+            "name": "Article",
+            "animation": "room",
+            "aside": "aside1",
+            "attributes": {
+                "id": "page1"
+            },
+            "children": [
+                {
+                    "type": "Molecule",
+                    "name": "Header",
+                    "attributes": {
+                        "title": "Page 1"
+                    },
+                    "children": [
+                        {
+                            "type": "Atom",
+                            "name": "Button",
+                            "router": "aside",
+                            "attributes": {
+                                "text": "show aside",
+                                "container": "left"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "Organism",
+                    "name": "Section",
+                    "attributes": {
+                        "id": "section1",
+                        "class": "active"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "Organism",
+            "name": "Aside",
+            "attributes": {
+                "id": "aside1"
+            },
+            "children": [
+                {
+                    "type": "Molecule",
+                    "name": "Header",
+                    "attributes": {
+                        "title": "Page 1"
+                    }
+                },
+                {
+                    "type": "Organism",
+                    "name": "Section",
+                    "attributes": {
+                        "id": "section1",
+                        "class": "active"
+                    },
+                    "children": [
+                        {
+                            "type": "Atom",
+                            "name": "Button",
+                            "attributes": {
+                                "text": "some button",
+                                "class": "small fluid"
+                            }
+                        },
+                        {
+                            "type": "Atom",
+                            "name": "Button",
+                            "attributes": {
+                                "text": "some button",
+                                "class": "small fluid"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

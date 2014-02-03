@@ -1,0 +1,18 @@
+body > aside
+  display: none
+  position: absolute
+  width: ASIDE_WIDTH
+  height: 100%
+  top: 0
+  left: 0
+
+  &.active
+    display: block
+    background-color: #333
+
+
+body > article.active
+  &.aside
+    vendor(transition, all ASIDE_TRANSITION_DURATION ASIDE_TRANSITION)
+    &[data-aside="show"]
+      vendor(transform, translateX(ASIDE_WIDTH))
