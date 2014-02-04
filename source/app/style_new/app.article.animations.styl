@@ -33,23 +33,31 @@ body > article
     &[data-animation="room"]
       &[data-direction="in"]
         vendor(animation-name, room_in)
+        vendor(transform-origin, 0 50%)
       &[data-direction="out"]
         vendor(animation-name, room_out)
+        vendor(transform-origin, 100% 50%)
       &[data-direction="back-in"]
         vendor(animation-name, room_back_in)
+        vendor(transform-origin, 100% 50%)
       &[data-direction="back-out"]
         vendor(animation-name, room_back_out)
+        vendor(transform-origin, 0 50%)
 
     // Animation CUBE
     &[data-animation="cube"]
       &[data-direction="in"]
         vendor(animation-name, cube_in)
+        vendor(transform-origin, 0 50%)
       &[data-direction="out"]
         vendor(animation-name, cube_out)
+        vendor(transform-origin, 100% 50%)
       &[data-direction="back-in"]
         vendor(animation-name, cube_back_in)
+        vendor(transform-origin, 100% 50%)
       &[data-direction="back-out"]
         vendor(animation-name, cube_back_out)
+        vendor(transform-origin, 0 50%)
 
 
 // Keyframes SLIDE
@@ -104,10 +112,13 @@ body > article
   100%
     vendor(transform, translateY(100%))
 
+
+DEFAULT_DEGREES = 75deg
+
 // Keyframes ROOM
 @keyframes room_in
   0%
-    vendor(transform, translateX(100%))
+    vendor(transform, translateX(100%) rotateY(-(DEFAULT_DEGREES)))
   100%
     vendor(transform, translateX(0))
 
@@ -115,11 +126,11 @@ body > article
   0%
     vendor(transform, translateX(0))
   100%
-    vendor(transform, translateX(-100%))
+    vendor(transform, translateX(-100%) rotateY(DEFAULT_DEGREES))
 
 @keyframes room_back_in
   0%
-    vendor(transform, translateX(-100%))
+    vendor(transform, translateX(-100%) rotateY(DEFAULT_DEGREES))
   100%
     vendor(transform, translateX(0))
 
@@ -127,12 +138,12 @@ body > article
   0%
     vendor(transform, translateX(0))
   100%
-    vendor(transform, translateX(100%))
+    vendor(transform, translateX(100%) rotateY(-(DEFAULT_DEGREES)))
 
 // Keyframes CUBE
 @keyframes cube_in
   0%
-    vendor(transform, translateX(100%))
+    vendor(transform, translateX(100%) rotateY(DEFAULT_DEGREES))
   100%
     vendor(transform, translateX(0))
 
@@ -140,11 +151,11 @@ body > article
   0%
     vendor(transform, translateX(0))
   100%
-    vendor(transform, translateX(-100%))
+    vendor(transform, translateX(-100%) rotateY(-(DEFAULT_DEGREES)))
 
 @keyframes cube_back_in
   0%
-    vendor(transform, translateX(-100%))
+    vendor(transform, translateX(-100%) rotateY(-(DEFAULT_DEGREES)))
   100%
     vendor(transform, translateX(0))
 
@@ -152,6 +163,5 @@ body > article
   0%
     vendor(transform, translateX(0))
   100%
-    vendor(transform, translateX(100%))
-
+    vendor(transform, translateX(100%) rotateY(DEFAULT_DEGREES))
 
