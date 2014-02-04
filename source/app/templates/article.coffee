@@ -1,7 +1,7 @@
 class App.Template.Article extends @Atomic.Template
 
-  @type         : "Article"
   @autorender   : false
+  @type         : "Article"
   @template     : """
     <article id="{{id}}" class="{{class}}"></article>
   """
@@ -12,7 +12,6 @@ class App.Template.Article extends @Atomic.Template
   @_animations_in_progress = 0
 
   @_startRouterAnimation = (element, animation, direction) =>
-    return false if element.length is 0
     element.addClass("active").attr "data-animation", animation
     element.attr "data-direction", direction
 
@@ -36,6 +35,7 @@ class App.Template.Article extends @Atomic.Template
   # ========================================
   @_swiped_px = 0
   @_aside_open = false
+  @_aside_transforming = false
 
   @_bindToSwipe = (article) =>
     article.bind "swipingHorizontal", @_onSwiping
@@ -46,6 +46,7 @@ class App.Template.Article extends @Atomic.Template
     target.unbind("webkitTransitionEnd", @_onTransitionEnd)
     if target.hasClass("aside") and !target.attr("data-aside")
       target.removeClass("aside")
+    @_aside_transforming = false
 
   @_onSwiping = (ev=event) =>
     delta = ev.quoData.delta.x
@@ -94,6 +95,7 @@ class App.Template.Article extends @Atomic.Template
       if @aside then App.Cache.asides()[@aside].activate()
       return
 
+    @constructor._animations_in_progress += 2
     current.el.bind "webkitAnimationEnd", @constructor._onAnimationEnd
     @el.bind "webkitAnimationEnd", @constructor._onAnimationEnd
     if is_back
@@ -108,6 +110,8 @@ class App.Template.Article extends @Atomic.Template
     sections.removeClass("active").filter("##{id}").addClass("active")
 
   toggleAside: ->
+    return false if @constructor._aside_transforming is true
+    @constructor._aside_transforming = true
     App.Cache.asides()[@aside].el.addClass("active")
     @el.bind "webkitTransitionEnd", @constructor._onTransitionEnd
     if @el.attr("data-aside")

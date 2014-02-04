@@ -34,6 +34,15 @@
                                 "icon": "arrow-right",
                                 "container": "right"
                             }
+                        },
+                        {
+                            "type": "Atom",
+                            "name": "Button",
+                            "router": "aside",
+                            "attributes": {
+                                "icon": "grid",
+                                "container": "left"
+                            }
                         }
                     ]
                 },
