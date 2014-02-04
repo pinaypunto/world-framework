@@ -108,6 +108,8 @@ class App.Template.Article extends @Atomic.Template
   section: (id) ->
     sections = @el.children("section")
     sections.removeClass("active").filter("##{id}").addClass("active")
+    if @constructor._aside_open
+      @toggleAside()
 
   toggleAside: ->
     return false if @constructor._aside_transforming is true

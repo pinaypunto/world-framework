@@ -8,7 +8,44 @@
             "attributes": {
                 "id": "aside1"
             },
-            "children": []
+            "children": [
+                {
+                    "type": "Molecule",
+                    "name": "Header",
+                    "attributes": {
+                        "title": "Aside"
+                    },
+                    "children": []
+                },
+                {
+                    "type": "Organism",
+                    "name": "Section",
+                    "attributes": {
+                      "id": "section1",
+                      "class": "active"
+                    },
+                    "children": [
+                        {
+                            "type": "Atom",
+                            "name": "Button",
+                            "router": "section:section1",
+                            "attributes": {
+                                "text": "go to section 1",
+                                "class": "fluid"
+                            }
+                        },
+                        {
+                            "type": "Atom",
+                            "name": "Button",
+                            "router": "section:section2",
+                            "attributes": {
+                                "text": "go to section 2",
+                                "class": "fluid"
+                            }
+                        }
+                    ]
+                }
+            ]
         },
         {
             "type": "Template",
