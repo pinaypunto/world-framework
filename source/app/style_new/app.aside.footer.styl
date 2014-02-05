@@ -1,2 +1,23 @@
 body > aside > footer
-  color: red
+  order: 3
+  background: ASIDE_FOOTER_BACKGROUND_COLOR
+  height: ASIDE_FOOTER_HEIGHT
+  line-height: ASIDE_FOOTER_HEIGHT
+  color: ASIDE_FOOTER_FONT_COLOR
+  box-shadow: ASIDE_FOOTER_SHADOW
+  text-align: center
+
+  & > nav
+    height: 100%
+    display: -webkit-box
+    display: -moz-box
+    display: -webkit-flex
+    display: flex
+    -webkit-box-flex: 1
+    & > button
+      flex: 1
+      order: 1
+      height: ASIDE_FOOTER_HEIGHT
+      background: none
+      border: none
+      font-size: FONT_SIZE_BIG

@@ -44,6 +44,23 @@
                             }
                         }
                     ]
+                },
+                {
+                    "type": "Molecule",
+                    "name": "Footer",
+                    "attributes": {
+                        "title": "Aside"
+                    },
+                    "children": [
+                        {
+                            "type": "Atom",
+                            "name": "Label",
+                            "attributes": {
+                                "text": "by @piniphone",
+                                "class": "font tiny margin-left"
+                            }
+                        }
+                    ]
                 }
             ]
         },

@@ -145,7 +145,7 @@ module.exports = (grunt) ->
         files: ['<%= source.app.coffee %>']
         tasks: ['coffee:app', 'uglify:app']
       app_style:
-        files: ['<%= source.app.style %>']
+        files: ['<%= source.app.style %>', 'source/app/style_new/__init.styl']
         tasks: ['stylus:app', 'copy']
       app_icons:
         files: ['<%= source.app.icons %>']
