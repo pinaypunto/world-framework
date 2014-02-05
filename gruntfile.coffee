@@ -44,9 +44,11 @@ module.exports = (grunt) ->
           'source/app/style/icons/atoms.*.styl'
         ]
         style: [
-          # 'source/app/style_new/reset.styl'
-          'source/app/style_new/app.styl'
-          'source/app/style_new/app.*.styl'
+          # # 'source/app/style_new_old/reset.styl'
+          # 'source/app/style_new_old/app.styl'
+          # 'source/app/style_new_old/app.*.styl'
+          'source/app/style_new/elements.styl'
+          'source/app/style_new/element.*.styl'
         ]
 
         # style: [
