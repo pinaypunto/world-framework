@@ -35,7 +35,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "section:section1",
+                            "options": {
+                                "router": "section:section1"
+                            },
                             "attributes": {
                                 "text": "go to section 1",
                                 "class": "fluid"
@@ -44,7 +46,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "section:section2",
+                            "options": {
+                                "router": "section:section2"
+                            },
                             "attributes": {
                                 "text": "go to section 2",
                                 "class": "fluid"
@@ -74,8 +78,10 @@
         {
             "type": "Template",
             "name": "Article",
-            "animation": "room",
-            "aside": "aside1",
+            "options": {
+                "animation": "room",
+                "aside": "aside1"
+            },
             "attributes": {
                 "id": "page1"
             },
@@ -90,7 +96,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "article:page2",
+                            "options": {
+                                "router": "article:page2"
+                            },
                             "attributes": {
                                 "icon": "arrow-right",
                                 "container": "right"
@@ -99,7 +107,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "aside",
+                            "options": {
+                                "router": "aside"
+                            },
                             "attributes": {
                                 "icon": "grid",
                                 "container": "left"
@@ -125,7 +135,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "article:page2",
+                            "options": {
+                                "router": "article:page2"
+                            },
                             "attributes": {
                                 "text": "go to page 2",
                                 "class": "fluid"
@@ -134,7 +146,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "article:page3",
+                            "options": {
+                                "router": "article:page3"
+                            },
                             "attributes": {
                                 "text": "go to page 3",
                                 "class": "fluid"
@@ -143,7 +157,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "article:page4",
+                            "options": {
+                                "router": "article:page4"
+                            },
                             "attributes": {
                                 "text": "go to page 4",
                                 "class": "fluid"
@@ -152,7 +168,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "article:page5",
+                            "options": {
+                                "router": "article:page5"
+                            },
                             "attributes": {
                                 "text": "go to page 5",
                                 "class": "fluid"
@@ -348,7 +366,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "section:section1",
+                            "options": {
+                                "router": "section:section1"
+                            },
                             "attributes": {
                                 "icon": "arrow-left"
                             }
@@ -356,7 +376,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "section:section2",
+                            "options": {
+                                "router": "section:section2"
+                            },
                             "attributes": {
                                 "icon": "arrow-right"
                             }
@@ -368,7 +390,9 @@
         {
             "type": "Template",
             "name": "Article",
-            "animation": "cover",
+            "options": {
+                "animation": "cover"
+            },
             "attributes": {
                 "id": "page2"
             },
@@ -383,7 +407,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "back",
+                            "options": {
+                                "router": "back"
+                            },
                             "attributes": {
                                 "icon": "arrow-left",
                                 "container": "left"
@@ -392,7 +418,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "article:page3",
+                            "options": {
+                                "router": "article:page3"
+                            },
                             "attributes": {
                                 "icon": "arrow-right",
                                 "container": "right"
@@ -411,7 +439,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "back",
+                            "options": {
+                                "router": "back"
+                            },
                             "attributes": {
                                 "class": "fluid error",
                                 "text": "go back..."
@@ -475,7 +505,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "section:section1",
+                            "options": {
+                                "router": "section:section1"
+                            },
                             "attributes": {
                                 "icon": "calendar",
                                 "container": "navigation"
@@ -484,7 +516,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "section:section2",
+                            "options": {
+                                "router": "section:section2"
+                            },
                             "attributes": {
                                 "icon": "ios7-calculator",
                                 "container": "navigation"
@@ -497,7 +531,9 @@
         {
             "type": "Template",
             "name": "Article",
-            "animation": "slide",
+            "options": {
+                "animation": "slide"
+            },
             "attributes": {
                 "id": "page3"
             },
@@ -512,7 +548,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "back",
+                            "options": {
+                                "router": "back"
+                            },
                             "attributes": {
                                 "icon": "arrow-left",
                                 "container": "left"
@@ -521,7 +559,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "article:page4",
+                            "options": {
+                                "router": "article:page4"
+                            },
                             "attributes": {
                                 "icon": "arrow-right",
                                 "container": "right"
@@ -540,7 +580,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "back",
+                            "options": {
+                                "router": "back"
+                            },
                             "attributes": {
                                 "class": "fluid error",
                                 "text": "go back..."
@@ -604,7 +646,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "section:section1",
+                            "options": {
+                                "router": "section:section1"
+                            },
                             "attributes": {
                                 "icon": "calendar",
                                 "container": "navigation"
@@ -613,7 +657,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "section:section2",
+                            "options": {
+                                "router": "section:section2"
+                            },
                             "attributes": {
                                 "icon": "ios7-calculator",
                                 "container": "navigation"
@@ -626,7 +672,9 @@
         {
             "type": "Template",
             "name": "Article",
-            "animation": "cube",
+            "options": {
+                "animation": "cube"
+            },
             "attributes": {
                 "id": "page4"
             },
@@ -641,7 +689,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "back",
+                            "options": {
+                                "router": "back"
+                            },
                             "attributes": {
                                 "icon": "arrow-left",
                                 "container": "left"
@@ -650,7 +700,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "article:page5",
+                            "options": {
+                                "router": "article:page5"
+                            },
                             "attributes": {
                                 "icon": "arrow-right",
                                 "container": "right"
@@ -669,7 +721,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "back",
+                            "options": {
+                                "router": "back"
+                            },
                             "attributes": {
                                 "class": "fluid error",
                                 "text": "go back..."
@@ -701,7 +755,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "section:section1",
+                            "options": {
+                                "router": "section:section1"
+                            },
                             "attributes": {
                                 "icon": "calendar",
                                 "container": "navigation"
@@ -710,7 +766,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "section:section2",
+                            "options": {
+                                "router": "section:section2"
+                            },
                             "attributes": {
                                 "icon": "ios7-calculator",
                                 "container": "navigation"
@@ -723,7 +781,9 @@
         {
             "type": "Template",
             "name": "Article",
-            "animation": "room",
+            "options": {
+                "animation": "room"
+            },
             "attributes": {
                 "id": "page5"
             },
@@ -738,7 +798,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "back",
+                            "options": {
+                                "router": "back"
+                            },
                             "attributes": {
                                 "icon": "arrow-left",
                                 "container": "left"
@@ -757,7 +819,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "back",
+                            "options": {
+                                "router": "back"
+                            },
                             "attributes": {
                                 "class": "fluid error",
                                 "text": "go back..."
@@ -789,7 +853,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "section:section1",
+                            "options": {
+                                "router": "section:section1"
+                            },
                             "attributes": {
                                 "icon": "calendar",
                                 "container": "navigation"
@@ -798,7 +864,9 @@
                         {
                             "type": "Atom",
                             "name": "Button",
-                            "router": "section:section2",
+                            "options": {
+                                "router": "section:section2"
+                            },
                             "attributes": {
                                 "icon": "ios7-calculator",
                                 "container": "navigation"

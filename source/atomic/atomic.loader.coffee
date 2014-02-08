@@ -16,10 +16,11 @@ Atomic.Loader = do ->
   parseStructure = (components) ->
     classes = []
     for component in components
-      attributes = component.attributes or {}
-      children = parseStructure(component.children or [])
+      attributes  = component.attributes or {}
+      children    = parseStructure(component.children or [])
+      options     = component.options or {}
       if App[component.type][component.name]
-        instance = new App[component.type][component.name](attributes, children, component)
+        instance = new App[component.type][component.name](attributes, children, options)
         classes.push instance
       else
         console.error "Atom.#{component.type}.#{component.name} not found"
