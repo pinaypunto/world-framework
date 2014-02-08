@@ -13,12 +13,15 @@ module.exports = (grunt) ->
 
       # Core
       core:
+        coffee_ns: 'source/core/ns.coffee'
         coffee: [
           'source/core/world.coffee'
           'source/core/world.*.coffee'
         ]
+
       # Atomic
       atomic:
+        coffee_ns: 'source/atomic/ns.coffee'
         coffee: [
           'source/atomic/atomic.coffee'
           'source/atomic/chemistry/base_class.coffee'
@@ -31,6 +34,7 @@ module.exports = (grunt) ->
 
       # App
       app:
+        coffee_ns: 'source/app/ns.coffee'
         coffee: [
           'source/app/app.coffee'
           'source/app/app.*.coffee'
@@ -40,32 +44,25 @@ module.exports = (grunt) ->
           'source/app/templates/*.coffee'
           'source/app/app.*.coffee'
         ]
-        icons: [
-          'source/app/style/icons/atoms.*.styl'
-        ]
         style: [
-          # # 'source/app/style_new_old/reset.styl'
-          # 'source/app/style_new_old/app.styl'
-          # 'source/app/style_new_old/app.*.styl'
-          'source/app/style_new/elements.styl'
-          'source/app/style_new/element.*.styl'
+          'source/app/style/elements.styl'
+          'source/app/style/element.*.styl'
+        ]
+        css: [
+          'source/app/style/reset.css'
+          'source/app/style/icons.css'
         ]
 
-        # style: [
-        #   'source/app/style/reset.styl'
-        #   'source/app/style/app.styl'
-        #   'source/app/style/app.*.styl'
-        #   'source/app/style/atom.*.styl'
-        #   'source/app/style/molecule.*.styl'
-        #   'source/app/style/organism.*.styl'
-        #   'source/app/style/template.*.styl'
-        #   # theme
-        #   'source/app/style/theme/app.styl'
-        #   'source/app/style/theme/atom.*.styl'
-        #   'source/app/style/theme/molecule.*.styl'
-        #   'source/app/style/theme/organism.*.styl'
-        #   'source/app/style/theme/template.*.styl'
-        # ]
+      # Editor
+      editor:
+        coffee: [
+          'source/app_editor/editor.coffee'
+          'source/app_editor/editor.*.coffee'
+        ]
+        style: [
+          'source/app_editor/styles/editor.styl'
+          'source/app_editor/styles/editor.*.styl'
+        ]
 
       # Contacts example
       contacts:
@@ -75,86 +72,96 @@ module.exports = (grunt) ->
         ]
 
 
-    coffee:
-      options: concat: true
-      core  : files: '<%=meta.builds%>/<%=pkg.name%>.debug.core.js'    : '<%=source.core.coffee%>'
-      atomic: files: '<%=meta.builds%>/<%=pkg.name%>.debug.atomic.js'  : '<%=source.atomic.coffee%>'
-      app   : files: '<%=meta.builds%>/<%=pkg.name%>.debug.app.js'     : '<%=source.app.coffee%>'
-      contacts: files: '<%=meta.builds%>/<%=pkg.name%>.debug.contacts.js'     : '<%=source.contacts.coffee%>'
-
-    uglify:
-      core:
-        options: mangle: false
-        files: '<%=meta.builds%>/<%=pkg.name%>.core.js': '<%=meta.builds%>/<%=pkg.name%>.debug.core.js'
-      atomic:
-        options: mangle: false
-        files: '<%=meta.builds%>/<%=pkg.name%>.atomic.source.js': '<%=meta.builds%>/<%=pkg.name%>.debug.atomic.js'
-      app:
-        options: mangle: false
-        files: '<%=meta.builds%>/<%=pkg.name%>.app.js': '<%=meta.builds%>/<%=pkg.name%>.debug.app.js'
-      contacts:
-        options: mangle: false
-        files: '<%=meta.builds%>/<%=pkg.name%>.contacts.js': '<%=meta.builds%>/<%=pkg.name%>.debug.contacts.js'
-
-    concat:
-      atomic:
-        files: '<%=meta.builds%>/<%=pkg.name%>.atomic.js': [
-          '<%= source.atomic.components %>',
-          '<%=meta.builds%>/<%=pkg.name%>.atomic.source.js'
-        ]
-
+    # ========================================================================
+    # Stylus compilations
+    # ========================================================================
     stylus:
       app:
         options: compress: true, import: [ '__init']
-        files: '<%=meta.builds%>/<%=pkg.name%>.app.css': '<%=source.app.style%>'
-      icons:
-        options: compress: true
-        files: '<%=meta.builds%>/<%=pkg.name%>.app.icons.css': '<%=source.app.icons%>'
+        files: '<%= meta.builds %>/<%= pkg.name %>.app.css': '<%= source.app.style %>'
+      editor:
+        options: compress: true, import: [ '__init']
+        files: '<%= meta.builds %>/<%= pkg.name %>.editor.css': '<%= source.editor.style %>'
 
+    # ========================================================================
+    # Concats: Prepares all coffees to compile and concats some csss...
+    # ========================================================================
+    concat:
+
+      core:
+        files: '<%= meta.builds %>/<%= pkg.name %>.core.coffee': [
+          '<%= source.core.coffee %>'
+          '<%= source.core.coffee_ns %>'
+        ]
+
+      atomic:
+        files: '<%= meta.builds %>/<%= pkg.name %>.atomic.coffee': [
+          '<%= source.core.coffee %>'
+          '<%= source.atomic.coffee %>'
+          '<%= source.atomic.coffee_ns %>'
+        ]
+
+      app:
+        files: '<%= meta.builds %>/<%= pkg.name %>.app.coffee': [
+          '<%= source.core.coffee %>'
+          '<%= source.atomic.coffee %>'
+          '<%= source.app.coffee %>'
+          '<%= source.app.coffee_ns %>'
+        ]
+
+      app_styles:
+        files:
+          '<%= meta.builds %>/<%= pkg.name %>.app.all.css': [
+            '<%= source.app.css %>',
+            '<%= meta.builds %>/<%= pkg.name %>.app.css'
+          ]
+
+    # ========================================================================
+    # Compile coffees
+    # ========================================================================
+    coffee:
+      core: files: '<%= meta.builds %>/<%= pkg.name %>.debug.core.js': '<%= meta.builds %>/<%= pkg.name %>.core.coffee'
+      atomic: files: '<%= meta.builds %>/<%= pkg.name %>.debug.atomic.js': '<%= meta.builds %>/<%= pkg.name %>.atomic.coffee'
+      app: files: '<%= meta.builds %>/<%= pkg.name %>.debug.app.js': '<%= meta.builds %>/<%= pkg.name %>.app.coffee'
+
+    # ========================================================================
+    # Then uglify them
+    # ========================================================================
+    uglify:
+      core: files: '<%=meta.builds%>/<%=pkg.name%>.core.js': '<%=meta.builds%>/<%=pkg.name%>.debug.core.js'
+      atomic: files: '<%=meta.builds%>/<%=pkg.name%>.atomic.source.js': '<%=meta.builds%>/<%=pkg.name%>.debug.atomic.js'
+      app:
+        options: mangle: false
+        files: '<%=meta.builds%>/<%=pkg.name%>.app.js': '<%=meta.builds%>/<%=pkg.name%>.debug.app.js'
+      editor: files: '<%=meta.builds%>/<%=pkg.name%>.editor.js': '<%=meta.builds%>/<%=pkg.name%>.debug.editor.js'
+      contacts: files: '<%=meta.builds%>/<%=pkg.name%>.contacts.js': '<%=meta.builds%>/<%=pkg.name%>.debug.contacts.js'
+
+    # ========================================================================
+    # Copy some files to test/app...
+    # ========================================================================
     copy:
-      examples:
-        files: [{
-          expand: true
-          flatten: true
-          filter: 'isFile'
-          src: [
-            '<%=meta.builds%>/world.core.js'
-            '<%=meta.builds%>/world.atomic.js'
-            '<%=meta.builds%>/world.app.js'
-            '<%=meta.builds%>/world.contacts.js'
-          ]
-          dest: 'test/example/js/'
-        },{
-          expand: true
-          flatten: true
-          filter: 'isFile'
-          src: [
-            '<%=meta.builds%>/world.app.css'
-            '<%=meta.builds%>/world.app.icons.css'
-          ]
-          dest: 'test/example/css/'
-        }]
+      app_test:
+        files: [
+          {src: '<%= meta.builds %>/world.app.js', dest: 'test/app/js/app.js'}
+          {src: '<%= meta.builds %>/world.app.all.css', dest: 'test/app/css/app.css'}
+        ]
 
 
     watch:
       core:
         files: ['<%= source.core.coffee %>']
-        tasks: ['coffee:core', 'uglify:core']
+        tasks: ['concat:core', 'concat:atomic', 'concat:app','uglify:core', 'uglify:atomic', 'uglify:app', 'copy']
       atomic:
         files: ['<%= source.atomic.coffee %>']
-        tasks: ['coffee:atomic', 'uglify:atomic', 'concat:atomic']
+        tasks: ['concat:atomic', 'concat:app','uglify:atomic', 'uglify:app', 'copy']
       app:
         files: ['<%= source.app.coffee %>']
-        tasks: ['coffee:app', 'uglify:app']
+        tasks: ['concat:app', 'coffee:app', 'uglify:app', 'copy']
       app_style:
-        files: ['<%= source.app.style %>', 'source/app/style_new/__init.styl']
-        tasks: ['stylus:app', 'copy']
-      app_icons:
-        files: ['<%= source.app.icons %>']
-        tasks: ['stylus:icons']
-      contacts:
-        files: ['<%= source.contacts.coffee %>']
-        tasks: ['coffee:contacts', 'uglify:contacts', 'copy']
+        files: ['<%= source.app.style %>', 'source/app/style/__init.styl']
+        tasks: ['stylus:app', 'concat:app_styles', 'copy']
+
+
 
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-concat'
@@ -164,4 +171,5 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-copy'
 
 
-  grunt.registerTask 'default', ['coffee', 'uglify', 'concat', 'stylus', 'copy']
+  grunt.registerTask 'default', ['stylus', 'concat', 'coffee', 'uglify', 'copy']
+

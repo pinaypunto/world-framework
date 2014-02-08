@@ -1,4 +1,4 @@
-class App.Molecule.Nav extends @Atomic.Molecule
+class App.Molecule.Nav extends Atomic.Molecule
 
   @type: "Nav"
   @template: """

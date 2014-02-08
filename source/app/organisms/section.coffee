@@ -1,4 +1,4 @@
-class App.Organism.Section extends @Atomic.Organism
+class App.Organism.Section extends Atomic.Organism
 
   @type: "Section"
   @template: """

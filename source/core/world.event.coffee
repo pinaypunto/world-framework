@@ -1,4 +1,4 @@
-@World.Event = do ->
+World.Event = do ->
 
   _listeners = {}
 

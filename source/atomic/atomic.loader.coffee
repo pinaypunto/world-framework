@@ -1,4 +1,4 @@
-@Atomic.Loader = do ->
+Atomic.Loader = do ->
 
   loadJson = (path, callback) ->
     $$.ajax

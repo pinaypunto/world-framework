@@ -1,4 +1,4 @@
-class App.Molecule.Header extends @Atomic.Molecule
+class App.Molecule.Header extends Atomic.Molecule
 
   @type: "Header"
   @template: """

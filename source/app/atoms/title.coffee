@@ -1,4 +1,4 @@
-class App.Atom.Title extends @Atomic.Atom
+class App.Atom.Title extends Atomic.Atom
 
   @type: "Title"
   @template: """

@@ -1,4 +1,4 @@
-class App.Template.Article extends @Atomic.Template
+class App.Template.Article extends Atomic.Template
 
   @autorender   : false
   @type         : "Article"
@@ -24,7 +24,7 @@ class App.Template.Article extends @Atomic.Template
       if article.aside then App.Cache.asides()[article.aside].el.addClass("active")
 
     el.removeAttr("data-direction").removeAttr("data-animation")
-    @_animations_in_progress--
+    setTimeout (=> @_animations_in_progress--), 50
 
   @_isAnimating = =>
     @_animations_in_progress > 0

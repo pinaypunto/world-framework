@@ -43,8 +43,8 @@ class World.Item
   ###
   bubble: (eventName, data={}, emmiter=@) ->
     if @parent
-      @parent.trigger(eventName, data, emmiter)
-      unless @preventBubbling is true
+      result = @parent.trigger(eventName, data, emmiter)
+      unless @preventBubbling is true or result is false
         @parent.bubble(eventName, data, emmiter)
 
   ###*
@@ -53,11 +53,12 @@ class World.Item
    * @param  {[type]} data
    * @return {[type]}
   ###
-  tunnel: (eventName, data={}) ->
+  tunnel: (eventName, data={}, emmiter=@) ->
     data._emmiter = data._emmiter or @
     for child in @children
-      child.trigger(eventName, data)
-      child.tunnel(eventName, data, namespace) unless child.preventTunneling is true
+      result = child.trigger(eventName, data)
+      unless child.preventTunneling is true or result is false
+        child.tunnel(eventName, data, namespace, emmiter)
 
   ###*
    * [listen description]

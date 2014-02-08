@@ -1,4 +1,4 @@
-class App.Atom.Input extends @Atomic.Atom
+class App.Atom.Input extends Atomic.Atom
 
   @type: "Input"
   @template: """

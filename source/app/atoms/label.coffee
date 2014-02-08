@@ -1,4 +1,4 @@
-class App.Atom.Label extends @Atomic.Atom
+class App.Atom.Label extends Atomic.Atom
 
   @type: "Label"
   @template: """

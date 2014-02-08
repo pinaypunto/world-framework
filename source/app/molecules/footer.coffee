@@ -1,4 +1,4 @@
-class App.Molecule.Footer extends @Atomic.Molecule
+class App.Molecule.Footer extends Atomic.Molecule
 
   @type: "Footer"
   @template: """

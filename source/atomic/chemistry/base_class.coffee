@@ -1,4 +1,4 @@
-class Atomic.Class extends @World.Item
+class Atomic.Class extends World.Item
 
   constructor: (@attributes={}, @children=[]) ->
     super

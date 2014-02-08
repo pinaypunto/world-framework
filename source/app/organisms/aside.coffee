@@ -1,4 +1,4 @@
-class App.Organism.Aside extends @Atomic.Organism
+class App.Organism.Aside extends Atomic.Organism
 
   @type: "Aside"
   @template: """

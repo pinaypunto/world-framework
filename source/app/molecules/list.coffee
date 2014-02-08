@@ -1,4 +1,4 @@
-class App.Molecule.List extends @Atomic.Molecule
+class App.Molecule.List extends Atomic.Molecule
 
   @type: "List"
   @template: """

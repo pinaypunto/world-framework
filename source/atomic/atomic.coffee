@@ -1,1 +1,1 @@
-@Atomic = Atomic = {}
+Atomic = {}

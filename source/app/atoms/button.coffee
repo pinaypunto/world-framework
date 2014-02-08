@@ -1,4 +1,4 @@
-class App.Atom.Button extends @Atomic.Atom
+class App.Atom.Button extends Atomic.Atom
 
   @type: "Button"
   @template: """

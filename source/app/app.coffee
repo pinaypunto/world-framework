@@ -1,9 +1,12 @@
-@App =
+App =
 
   Atom      : {}
   Molecule  : {}
   Organism  : {}
   Template  : {}
+
+  __Atomic    : Atomic
+  __World     : World
 
   Cache       :
     structure : []
@@ -15,3 +18,4 @@
       body = $$ document.body
       component.render(body) for component in app.structure
       App.Router.init(app.startRoute)
+

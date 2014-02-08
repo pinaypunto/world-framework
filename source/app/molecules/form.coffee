@@ -1,4 +1,4 @@
-class App.Molecule.Form extends @Atomic.Molecule
+class App.Molecule.Form extends Atomic.Molecule
 
   @type     : "Form"
   @template : """
