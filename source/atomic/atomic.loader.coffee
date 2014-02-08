@@ -20,11 +20,13 @@ Atomic.Loader = do ->
       children    = parseStructure(component.children or [])
       options     = component.options or {}
       if App[component.type][component.name]
-        instance = new App[component.type][component.name](attributes, children, options)
-        classes.push instance
+        classes.push _createItem(component.type, component.name, attributes, children, options)
       else
         console.error "Atom.#{component.type}.#{component.name} not found"
     return classes
+
+  _createItem = (type, name, attributes, children, options) ->
+    new App[type][name](attributes, children, options)
 
 
   loadJson        : loadJson

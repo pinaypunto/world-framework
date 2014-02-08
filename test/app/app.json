@@ -1,6 +1,7 @@
 {
     "title": "App demo",
     "startRoute": "page1",
+    "startAnimation": "fade",
     "structure": [
         {
             "type": "Organism",
