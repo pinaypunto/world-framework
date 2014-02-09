@@ -1,33 +1,27 @@
 Atomic.Loader = do ->
 
-  loadJson = (path, callback) ->
+  loadJson = (url, callback) ->
     $$.ajax
-      url       : path
+      url       : url
       dataType  : "json"
-      error     : -> throw "Error loading app strcture json in #{path}"
+      error     : -> throw "Error loading app strcture json in #{url}"
       success   : (appJson) ->
         appJson = JSON.parse(appJson.response)
         app = {}
         app[attr] = value for attr, value of appJson when attr isnt "structure"
-        app.structure = parseStructure(appJson.structure)
-        console.log "Loaded #{path} :: ", app
+        app.structure = []
+        app.structure.push(createStructure(root)) for root in appJson.structure
         callback.call callback, app
 
-  parseStructure = (components) ->
-    classes = []
-    for component in components
-      attributes  = component.attributes or {}
-      children    = parseStructure(component.children or [])
-      options     = component.options or {}
-      if App[component.type][component.name]
-        classes.push _createItem(component.type, component.name, attributes, children, options)
-      else
-        console.error "Atom.#{component.type}.#{component.name} not found"
-    return classes
-
-  _createItem = (type, name, attributes, children, options) ->
-    new App[type][name](attributes, children, options)
+  createStructure = (item, parent) ->
+    attributes = item.attributes or {}
+    options = item.options or {}
+    instance = new App[item.type][item.name](attributes, [], options)
+    if parent then parent.appendChild(instance)
+    children = item.children or []
+    createStructure(child, instance) for child in children
+    return instance
 
 
   loadJson        : loadJson
-  parseStructure  : parseStructure
+  createStructure : createStructure
