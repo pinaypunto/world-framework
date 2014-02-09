@@ -1,33 +1,25 @@
 App.Cache = do ->
 
-  _cache     = null
-  _article   = null
-  _articles  = {}
-  _asides    = {}
+  _article = null
+  _cache =
+    articles  : {}
+    asides    : {}
 
-  set = (app) ->
-    _cache = app
-    do _cacheCommons
-
-  get =  ->
-    return _cache
+  init = (app) ->
+    _cacheCommons app
 
   setArticle = (instance) ->
     _article = instance
 
-  addArticle = (instance) ->
-    _articles[instance.attributes.id] = instance
-
-  _cacheCommons = ->
-    for component in _cache when component.constructor.type is "Article"
-      _articles[component.attributes.id] = component
-    for component in _cache when component.constructor.type is "Aside"
-      _asides[component.attributes.id] = component
+  _cacheCommons = (app) ->
+    for component in app when component.constructor.type in ["Article", "Aside"]
+      node_name = component.constructor.type.toLowerCase()
+      _cache[node_name] = _cache[node_name] or {}
+      _cache[node_name][component.attributes.id] = component
 
 
-  set         : set
-  get         : get
+  init        : init
   setArticle  : setArticle
-  articles    : -> _articles
+  articles    : -> _cache.article
+  asides      : -> _cache.aside
   article     : -> _article
-  asides      : -> _asides
