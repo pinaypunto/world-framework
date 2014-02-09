@@ -1,0 +1,28 @@
+vendor(prop, args)
+  for vendor in webkit moz ms o
+    -{vendor}-{prop} args
+  {prop} args
+
+display-flexbox()
+  display: -webkit-box
+  display: -moz-box
+  display: box
+  display: -webkit-flexbox
+  display: -ms-flexbox
+  display: -webkit-flex
+  display: flex
+
+display-flexbox-vertical()
+  display-flexbox()
+  vendor(flex-direction, column)
+  vendor(box-orient, vertical)
+
+display-flexbox-horizontal()
+  display-flexbox()
+  vendor(flex-direction, row)
+  vendor(box-orient, horizontal)
+
+display-flex(weight)
+  vendor(box-flex, weight)
+  vendor(flex, weight)
+

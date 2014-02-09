@@ -4,7 +4,7 @@ App.Router = do ->
 
   init = (article_id) ->
     _routes = []
-    article(article_id)
+    article(article_id, false)
 
   article = (id, is_back = false) ->
     unless App.Template.Article._isAnimating()

@@ -6,3 +6,7 @@ class App.Molecule.Footer extends Atomic.Molecule
         <nav data-children-container="navigation"></nav>
     </footer>
   """
+
+  render: ->
+    super
+    @el[0].addEventListener "touchmove", (e) -> e.preventDefault()

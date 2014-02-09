@@ -11,6 +11,7 @@ class App.Molecule.Header extends Atomic.Molecule
 
   render: ->
     super
+    @el[0].addEventListener "touchmove", (e) -> e.preventDefault()
     buttons = @children.filter (item) -> item.namespace is "Button"
     for button in buttons
       if button.visibleOnSection

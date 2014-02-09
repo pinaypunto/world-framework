@@ -11,7 +11,7 @@ class App.Molecule.Form extends Atomic.Molecule
     super
     submit_attributes = text: "Submit", class: "big fluid accept"
     @submit = new App.Atom.Button(submit_attributes)
-    @appendChilds [@submit]
+    @appendChild @submit
     @submit.el.bind "tap", (e) => console.log @value()
 
   onSubmit: (callback) ->

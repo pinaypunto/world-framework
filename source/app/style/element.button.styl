@@ -1,0 +1,52 @@
+button
+  vendor(border-radius, BUTTON_BORDER_RADIUS)
+  outline: none
+  background: BUTTON_DEFAULT_BACKGROUND_COLOR
+  color: BUTTON_DEFAULT_FONT_COLOR
+  border: BUTTON_BORDER
+  cursor: pointer
+  display: block
+  font-family: inherit
+  font-size: inherit
+
+  padding: 10px
+  margin-top: 2px
+  margin-bottom: 2px
+
+  &.inline
+    display: inline
+
+  &.fluid
+    width: 100%
+
+  &.success
+    background: BUTTON_SUCCESS_BACKGROUND_COLOR
+    color: BUTTON_SUCCESS_FONT_COLOR
+
+  &.cancel
+    background: BUTTON_CANCEL_BACKGROUND_COLOR
+    color: BUTTON_CANCEL_FONT_COLOR
+
+  &.warning
+    background: BUTTON_WARNING_BACKGROUND_COLOR
+    color: BUTTON_WARNING_FONT_COLOR
+
+
+  header > nav > &
+    margin: 0
+    display: inline
+    background: none
+    height: HEADER_HEIGHT
+    font-size: FONT_SIZE_HUGE
+    border: none
+
+
+  footer > nav &
+    margin: 0
+    display-flex(1)
+    order: 1
+    font-size: FONT_SIZE_HUGE*1.4
+    height: FOOTER_HEIGHT
+    background: none
+    border: none
+    box-shadow: FOOTER_BUTTONS_SHADOW

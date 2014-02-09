@@ -23,7 +23,7 @@ class App.Template.Article extends Atomic.Template
       article = App.Cache.articles()[el.attr("id")]
       if article.aside then App.Cache.asides()[article.aside].el.addClass("active")
 
-    el.removeAttr("data-direction").removeAttr("data-animation")
+    el.removeAttr("data-direction").removeAttr("data-animation").removeAttr("data-start-animation")
     setTimeout (=> @_animations_in_progress--), 50
 
   @_isAnimating = =>
@@ -38,8 +38,9 @@ class App.Template.Article extends Atomic.Template
   @_aside_transforming = false
 
   @_bindToSwipe = (article) =>
-    article.bind "swipingHorizontal", @_onSwiping
+    article.bind "swipingHorizontal", @_onSwipingHorizontal
     article.bind "touchend", @_onSwipingEnd
+    article.bind "touchmove", @_onTouchMove
 
   @_onTransitionEnd = (ev = event) =>
     target = $$(ev.target).closest "article"
@@ -48,7 +49,7 @@ class App.Template.Article extends Atomic.Template
       target.removeClass("aside")
     @_aside_transforming = false
 
-  @_onSwiping = (ev=event) =>
+  @_onSwipingHorizontal = (ev=event) =>
     delta = ev.quoData.delta.x
     if delta >= 0
       @_swiped_px = delta
@@ -56,6 +57,7 @@ class App.Template.Article extends Atomic.Template
       article = $$(ev.target).closest("article")
       article.style "webkitTransform", "translateX(#{delta}px)"
     else @_swiped_px = 0
+    ev.originalEvent.preventDefault()
 
   @_onSwipingEnd = (ev=event) =>
     article = $$(ev.target).closest("article")
@@ -66,6 +68,11 @@ class App.Template.Article extends Atomic.Template
       article.addClass("aside")
     article.removeAttr("style")
     @_swiped_px = 0
+
+  @_onTouchMove = (ev=event) =>
+    if @_aside_open
+      ev.preventDefault()
+
 
 
 
@@ -88,11 +95,12 @@ class App.Template.Article extends Atomic.Template
   _show: (is_back) =>
     current = App.Cache.article()
     App.Cache.setArticle @
-    @el.addClass("active")
     App.Cache.asides()[@aside].deactivate() if @aside
     App.Cache.asides()[current.aside].deactivate() if current?.aside
+    @el.addClass("active")
     unless current
-      if @aside then App.Cache.asides()[@aside].activate()
+      @el.bind "webkitAnimationEnd", @constructor._onAnimationEnd
+      @el.attr("data-start-animation", "start_fade")
       return
 
     @constructor._animations_in_progress += 2

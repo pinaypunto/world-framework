@@ -1,5 +1,4 @@
 node_modules/
 builds/
-source/app/style
-source/example/
+source/app_editor/
 test/example/

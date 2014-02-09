@@ -8,10 +8,10 @@ class App.Atom.Button extends Atomic.Atom
     </button>
   """
 
-
   constructor: (attributes, children, options) ->
     super
-    if options?.router then @_checkRouter(options.router)
+    if options?.router
+      @_checkRouter(options.router)
 
   _checkRouter: (route) ->
     parts = route.split ":"

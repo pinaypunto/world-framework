@@ -1,0 +1,21 @@
+article
+
+  display-flexbox-vertical()
+  position: absolute
+  top: 0
+  width: 100%
+  height: 100%
+  left: -100%
+  visibility: hidden
+
+  &.active
+    left: 0
+    visibility: visible
+
+    &.aside
+      vendor(transition, all ASIDE_TRANSITION_DURATION ASIDE_TRANSITION)
+      &[data-aside="show"]
+        vendor(transform, translateX(ASIDE_WIDTH))
+
+    &:not([data-animation])
+      box-shadow 0 0 35px #000

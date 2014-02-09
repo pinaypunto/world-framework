@@ -1,0 +1,19 @@
+section
+  display-flex(1)
+  vendor(order, 2)
+  overflow-x: hidden
+  overflow-y: scroll
+  -webkit-overflow-scrolling: touch
+
+  &:not(.active)
+    display: none
+
+  article > &
+    background-color: SECTION_BACKGROUND_COLOR
+    color: SECTION_FONT_COLOR
+    padding: SECTION_PADDING
+
+  aside > &
+    background-color: ASIDE_SECTION_BACKGROUND_COLOR
+    color: ASIDE_SECTION_FONT_COLOR
+    padding: ASIDE_SECTION_PADDING
