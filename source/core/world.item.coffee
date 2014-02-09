@@ -13,27 +13,13 @@ class World.Item
     child.parent = @ for child in @children
 
   ###*
-   * [setAttributes description]
-   * @param {[type]} @attributes
-  ###
-  setAttributes: (@attributes) -> @
-
-  ###*
-   * [mixAttributes description]
-   * @param  {[type]} attributes
-   * @return {[type]}
-  ###
-  mixAttributes: (attributes) ->
-    @attributes[key] = value for key, value of attributes
-
-  ###*
-   * [appendChilds description]
+   * [appendChild description]
    * @param  {[type]} children
    * @return {[type]}
   ###
-  appendChilds: (children) ->
-    child.parent = @ for child in children
-    @children = @children.concat(children)
+  appendChild: (instance) ->
+    instance.parent = @
+    @children.push instance
 
   ###*
    * [bubble description]
@@ -41,11 +27,11 @@ class World.Item
    * @param  {[type]} data
    * @return {[type]}
   ###
-  bubble: (eventName, data={}, emmiter=@) ->
+  bubble: (event_name, data = {}, emmiter = @) ->
     if @parent
-      result = @parent.trigger(eventName, data, emmiter)
+      result = @parent.trigger(event_name, data, emmiter)
       unless @preventBubbling is true or result is false
-        @parent.bubble(eventName, data, emmiter)
+        @parent.bubble(event_name, data, emmiter)
 
   ###*
    * [tunnel description]
@@ -53,12 +39,11 @@ class World.Item
    * @param  {[type]} data
    * @return {[type]}
   ###
-  tunnel: (eventName, data={}, emmiter=@) ->
-    data._emmiter = data._emmiter or @
+  tunnel: (event_name, data = {}, emmiter = @) ->
     for child in @children
-      result = child.trigger(eventName, data)
+      result = child.trigger(event_name, data)
       unless child.preventTunneling is true or result is false
-        child.tunnel(eventName, data, namespace, emmiter)
+        child.tunnel(event_name, data, emmiter)
 
   ###*
    * [listen description]
@@ -92,12 +77,9 @@ class World.Item
       callback.call(callback, data, emmiter)
 
 
-
 guid = ->
   'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace /[xy]/g, (c) ->
     r = Math.random() * 16 | 0
     v = if c is 'x' then r else r & 3 | 8
     v.toString 16
   .toUpperCase()
-
-

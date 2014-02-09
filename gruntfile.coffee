@@ -150,10 +150,18 @@ module.exports = (grunt) ->
     watch:
       core:
         files: ['<%= source.core.coffee %>']
-        tasks: ['concat:core', 'concat:atomic', 'concat:app','uglify:core', 'uglify:atomic', 'uglify:app', 'copy']
+        tasks: [
+          'concat:core', 'concat:atomic', 'concat:app',
+          'coffee:core', 'coffee:atomic', 'coffee:app',
+          'uglify:core', 'uglify:atomic', 'uglify:app',
+          'copy']
       atomic:
         files: ['<%= source.atomic.coffee %>']
-        tasks: ['concat:atomic', 'concat:app','uglify:atomic', 'uglify:app', 'copy']
+        tasks: [
+          'concat:atomic', 'concat:app',
+          'coffee:atomic', 'coffee:app',
+          'uglify:atomic', 'uglify:app',
+          'copy']
       app:
         files: ['<%= source.app.coffee %>']
         tasks: ['concat:app', 'coffee:app', 'uglify:app', 'copy']
@@ -172,4 +180,7 @@ module.exports = (grunt) ->
 
 
   grunt.registerTask 'default', ['stylus', 'concat', 'coffee', 'uglify', 'copy']
+
+
+
 
